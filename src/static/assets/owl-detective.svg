@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" role="img" aria-label="A warm brown owl detective wearing a green hat and holding a magnifying glass">
+  <defs>
+    <linearGradient id="owlBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b6449"/>
+      <stop offset="1" stop-color="#6f4237"/>
+    </linearGradient>
+    <linearGradient id="owlFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c78e6a"/>
+      <stop offset="1" stop-color="#a96146"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e5d6ba"/>
+      <stop offset="1" stop-color="#ceab7d"/>
+    </linearGradient>
+    <linearGradient id="hat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78b46c"/>
+      <stop offset="1" stop-color="#32745c"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-25%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#4b382d" flood-opacity=".22"/>
+    </filter>
+    <filter id="tinyShadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#4b382d" flood-opacity=".23"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="80" cy="169" rx="48" ry="7" fill="#6e8069" opacity=".19"/>
+  <g filter="url(#shadow)">
+    <!-- body and wings -->
+    <path d="M47 83c-12 9-19 29-15 47 3 12 12 15 21 6l10-13-4-34z" fill="#794737" stroke="#603a32" stroke-width="2"/>
+    <path d="M113 83c12 9 19 29 15 47-3 12-12 15-21 6l-10-13 4-34z" fill="#794737" stroke="#603a32" stroke-width="2"/>
+    <path d="M40 78c-4 22-3 57 7 71 8 12 19 17 33 17s25-5 33-17c10-14 11-49 7-71-5-29-18-45-40-45S45 49 40 78z" fill="url(#owlBody)" stroke="#603a32" stroke-width="2"/>
+    <path d="M48 99c4-23 13-35 24-39 14-5 28 1 35 16 5 9 7 22 7 37 0 19-13 35-33 35s-33-16-33-35c0-5 0-10 0-14z" fill="url(#belly)" stroke="#bc7b4f" stroke-width="1.5"/>
+    <path d="M62 116c7 7 13 10 18 9m0 0c8-4 14-8 19-16m-19 16c-1 8-1 13-1 19" fill="none" stroke="#c49162" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    <path d="M72 103c3-5 6-8 9-9m8 0c4 3 7 6 10 11" fill="none" stroke="#c49162" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+
+    <!-- face -->
+    <path d="M32 64c-3-19 3-38 18-48l8 12c7-4 15-6 22-5 7-1 15 1 22 5l8-12c15 10 21 29 18 48-3 26-16 40-48 40S35 90 32 64z" fill="url(#owlFace)" stroke="#603a32" stroke-width="2"/>
+    <path d="M43 62c10-10 21-15 37-15s27 5 37 15c-6 22-19 33-37 33S49 84 43 62z" fill="#e1d1b1" opacity=".93"/>
+    <ellipse cx="68" cy="64" rx="17" ry="19" fill="#f2eede" stroke="#b9754b" stroke-width="1.5"/>
+    <ellipse cx="92" cy="64" rx="17" ry="19" fill="#f2eede" stroke="#b9754b" stroke-width="1.5"/>
+    <ellipse cx="69" cy="65" rx="7" ry="10" fill="#334a3c"/>
+    <ellipse cx="91" cy="65" rx="7" ry="10" fill="#334a3c"/>
+    <circle cx="71" cy="61" r="2.6" fill="#fbfbf6"/>
+    <circle cx="93" cy="61" r="2.6" fill="#fbfbf6"/>
+    <path d="M76 77l4-5 4 5-4 8z" fill="#be8753" stroke="#965d39" stroke-width="1.4"/>
+    <path d="M76 88c3 4 7 5 11 0" fill="none" stroke="#6a3b35" stroke-width="2" stroke-linecap="round"/>
+    <path d="M51 45c7-8 15-11 23-11m12 0c8 0 16 3 23 11" fill="none" stroke="#824735" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+
+    <!-- green detective hat -->
+    <path d="M50 39c4-13 12-25 27-30 10-4 21-2 28 2-3 7-7 14-12 19-12 5-27 8-43 9z" fill="url(#hat)" stroke="#285944" stroke-width="2"/>
+    <path d="M47 38c17 4 39 3 63-7 6 0 12 3 16 7-6 8-18 11-33 12-18 1-36-2-47-8z" fill="#3e8865" stroke="#285944" stroke-width="2"/>
+    <path d="M72 15c7-4 14-5 21-3" fill="none" stroke="#9dd087" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <circle cx="112" cy="31" r="3" fill="#b6d795" opacity=".8"/>
+
+    <!-- scarf -->
+    <path d="M48 98c17 8 46 12 65 0l5 13c-20 14-47 14-74 0z" fill="#c79f6a" stroke="#a3683e" stroke-width="2"/>
+    <path d="M101 108l17 5-6 29-12-5z" fill="#be8555" stroke="#a3683e" stroke-width="2"/>
+    <path d="M54 103c16 6 37 8 55 2" fill="none" stroke="#dac69e" stroke-width="2" opacity=".8"/>
+
+    <!-- feet -->
+    <path d="M61 153c-7 2-13 8-14 13 6 3 13 2 18-1 5 4 12 4 17 1-1-7-8-12-15-13z" fill="#c38f60" stroke="#9d603c" stroke-width="2"/>
+    <path d="M99 153c-7 2-13 8-14 13 6 3 13 2 18-1 5 4 12 4 17 1-1-7-8-12-15-13z" fill="#c38f60" stroke="#9d603c" stroke-width="2"/>
+  </g>
+
+  <!-- magnifying glass -->
+  <g filter="url(#tinyShadow)" transform="rotate(-14 125 113)">
+    <circle cx="117" cy="105" r="18" fill="#d9f1e4" fill-opacity=".7" stroke="#346b58" stroke-width="4"/>
+    <circle cx="117" cy="105" r="13" fill="#edf8f2" fill-opacity=".48" stroke="#79b79e" stroke-width="1.5"/>
+    <path d="M130 118l15 16" stroke="#346b58" stroke-width="6" stroke-linecap="round"/>
+    <path d="M131 119l13 14" stroke="#b37544" stroke-width="3" stroke-linecap="round"/>
+    <path d="M110 98l6-4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+  </g>
+</svg>

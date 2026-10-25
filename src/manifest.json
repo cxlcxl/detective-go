@@ -1,0 +1,19 @@
+{
+  "name": "小侦探奇遇记",
+  "appid": "__UNI__LITTLE_DETECTIVE",
+  "description": "给孩子的低刺激色彩侦探学习冒险",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "uniStatistics": {
+    "enable": false
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true,
+    "lazyCodeLoading": "requiredComponents"
+  }
+}

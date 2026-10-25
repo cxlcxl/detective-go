@@ -1,0 +1,49 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "发现",
+        "enablePullDownRefresh": false,
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/english/index",
+      "style": { "navigationBarTitleText": "英语线索" }
+    },
+    {
+      "path": "pages/math/index",
+      "style": { "navigationBarTitleText": "数学机关" }
+    },
+    {
+      "path": "pages/history/index",
+      "style": { "navigationBarTitleText": "时间长河" }
+    },
+    {
+      "path": "pages/sister/index",
+      "style": { "navigationBarTitleText": "妹妹的奇遇" }
+    },
+    {
+      "path": "pages/parent/index",
+      "style": { "navigationBarTitleText": "家庭证据册" }
+    }
+  ],
+  "tabBar": {
+    "color": "#626f65",
+    "selectedColor": "#28583f",
+    "backgroundColor": "#fffdf6",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "发现" },
+      { "pagePath": "pages/history/index", "text": "时间长河" },
+      { "pagePath": "pages/parent/index", "text": "我的" }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#f7f4ea",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f4ea",
+    "backgroundTextStyle": "light"
+  }
+}

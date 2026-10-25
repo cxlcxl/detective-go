@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="360" viewBox="0 0 390 360" role="img" aria-labelledby="title desc">
+  <title id="title">Detective adventure island map</title>
+  <desc id="desc">A bright illustrated island with a red train station, a yellow mechanical hut, and a teal time dock connected by a winding river.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff8df"/>
+      <stop offset="1" stop-color="#f8efd0"/>
+    </linearGradient>
+    <linearGradient id="island" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c7e6a7"/>
+      <stop offset="1" stop-color="#a7d28e"/>
+    </linearGradient>
+    <linearGradient id="islandLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8efb8"/>
+      <stop offset="1" stop-color="#b6dc9b"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9e8ee"/>
+      <stop offset="0.52" stop-color="#82d1df"/>
+      <stop offset="1" stop-color="#67bdd0"/>
+    </linearGradient>
+    <linearGradient id="trainBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f68b54"/>
+      <stop offset="1" stop-color="#df5945"/>
+    </linearGradient>
+    <linearGradient id="houseWall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0a1"/>
+      <stop offset="1" stop-color="#f4cc65"/>
+    </linearGradient>
+    <linearGradient id="dockWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67c8b2"/>
+      <stop offset="1" stop-color="#2f998a"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#5b7c54" flood-opacity=".22"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#58745f" flood-opacity=".2"/>
+    </filter>
+    <g id="tree">
+      <ellipse cx="0" cy="17" rx="18" ry="5" fill="#6d9d63" opacity=".26"/>
+      <path d="M-3 9h6l2 13h-10z" fill="#8b6947"/>
+      <path d="M0-21C-12-21-18-13-16-5c-9 4-6 17 3 18 2 7 11 9 16 4 6 5 15 0 15-8 8-2 8-14 0-17 1-8-7-13-18-13z" fill="#5eaa70"/>
+      <path d="M-8-14c5-7 14-7 18-1-4-1-7 0-10 4-3-2-5-3-8-3z" fill="#8bd18a" opacity=".76"/>
+      <circle cx="-11" cy="-2" r="4" fill="#77c27d"/>
+    </g>
+    <g id="cloud">
+      <path d="M0 18h59c9 0 15-6 15-13 0-8-7-14-16-14-3-10-12-16-23-16-12 0-21 7-24 17-9-1-16 5-16 13 0 8 6 13 15 13z" fill="#fffdf3" opacity=".84"/>
+      <path d="M9 10h44" stroke="#f3e7c8" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    </g>
+    <g id="footprint" fill="#75aa72" opacity=".7">
+      <ellipse cx="0" cy="0" rx="3.5" ry="6" transform="rotate(-26)"/>
+      <circle cx="-4" cy="-6" r="1.5"/>
+      <circle cx="-1" cy="-8" r="1.5"/>
+      <circle cx="2" cy="-8" r="1.4"/>
+    </g>
+    <g id="gear" fill="none" stroke="#d29d32" stroke-width="3">
+      <circle cx="0" cy="0" r="8" fill="#ffe18a"/>
+      <path d="M0-14v5M0 9v5M-14 0h5M9 0h5M-10-10l4 4M6 6l4 4M10-10l-4 4M-6 6l-4 4" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="3" fill="#f5bc4d"/>
+    </g>
+  </defs>
+
+  <rect width="390" height="360" rx="24" fill="url(#sky)"/>
+  <use xlink:href="#cloud" x="25" y="25" transform="scale(.72)"/>
+  <use xlink:href="#cloud" x="285" y="32" transform="scale(.58)"/>
+  <circle cx="342" cy="24" r="13" fill="#ffd96d" opacity=".84"/>
+  <circle cx="342" cy="24" r="20" fill="none" stroke="#f8df91" stroke-width="2" opacity=".48"/>
+
+  <path d="M20 105C24 69 62 53 102 61c31-25 78-17 99 13 41-20 88-6 104 25 40 4 65 30 64 67 19 28-4 72-39 77-20 37-75 45-112 22-40 25-96 11-108-23-40 5-82-27-70-62-29-16-32-50-20-75z" fill="#78ae72" opacity=".28" transform="translate(0 3)"/>
+  <path d="M17 99C22 63 60 48 101 57c31-25 78-17 99 13 41-20 88-6 104 25 40 4 65 30 64 67 19 28-4 72-39 77-20 37-75 45-112 22-40 25-96 11-108-23-40 5-82-27-70-62-29-16-32-50-20-75z" fill="url(#island)" stroke="#84b77a" stroke-width="2"/>
+  <path d="M49 93c38-25 76-17 104 5 36-19 77-7 92 20 38-12 75 6 82 34 6 26-12 48-42 53-26 31-70 34-102 12-31 19-72 9-89-19-28 3-56-15-57-42-1-22 4-44 12-63z" fill="url(#islandLight)" opacity=".68"/>
+
+  <path d="M342-8C327 31 285 53 278 90c-7 37 31 60 13 91-17 29-57 39-82 60-27 22-45 54-73 83-14 15-32 26-51 37h84c22-18 37-40 58-56 30-23 70-33 88-65 18-31-12-58-1-88 12-35 57-58 66-106z" fill="url(#river)" stroke="#65b9ca" stroke-width="2" opacity=".96"/>
+  <path d="M327 9C313 42 283 61 280 89c-3 28 20 42 17 61" fill="none" stroke="#e4fbf3" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+  <path d="M273 177c-15 22-40 31-57 43-17 12-31 31-47 49" fill="none" stroke="#e4fbf3" stroke-width="4" stroke-linecap="round" opacity=".62"/>
+
+  <g opacity=".95">
+    <use xlink:href="#tree" x="34" y="142" transform="scale(.78)"/>
+    <use xlink:href="#tree" x="115" y="87" transform="scale(.62)"/>
+    <use xlink:href="#tree" x="174" y="126" transform="scale(.55)"/>
+    <use xlink:href="#tree" x="365" y="121" transform="scale(.7)"/>
+    <use xlink:href="#tree" x="358" y="252" transform="scale(.76)"/>
+    <use xlink:href="#tree" x="219" y="319" transform="scale(.62)"/>
+    <use xlink:href="#tree" x="26" y="258" transform="scale(.6)"/>
+  </g>
+
+  <!-- small stone bridge over the river -->
+  <g filter="url(#softShadow)">
+    <path d="M250 211c14-6 30-5 44 2l-5 12c-14-6-27-6-39-1z" fill="#d8c58e" stroke="#b49c6e" stroke-width="2"/>
+    <path d="M256 212l-2 10M266 210l-1 11M278 211l-1 11M288 215l-1 10" stroke="#b49c6e" stroke-width="1.5"/>
+  </g>
+
+  <!-- upper-left language station -->
+  <g filter="url(#shadow)">
+    <path d="M31 95h82v27H31z" fill="#f4d6a5" stroke="#d39565" stroke-width="2"/>
+    <path d="M26 96l46-26 47 26z" fill="#e65743" stroke="#b9443c" stroke-width="2"/>
+    <path d="M36 91h74l-4-7H40z" fill="#f47e4c"/>
+    <path d="M42 103h19v19H42zM68 103h18v19H68zM93 103h14v19H93z" fill="#fff1ba" stroke="#d39565" stroke-width="1.5"/>
+    <path d="M47 105h9v17h-9zM73 105h8v17h-8z" fill="#89c7d1"/>
+    <path d="M78 72v-16h9v16" fill="#f4d6a5" stroke="#d39565" stroke-width="2"/>
+    <path d="M74 56h17l-8-8z" fill="#e65743" stroke="#b9443c" stroke-width="1.5"/>
+    <path d="M84 48v-8" stroke="#b9443c" stroke-width="2"/>
+    <circle cx="84" cy="38" r="3" fill="#f2b44f"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <path d="M22 125h105" stroke="#715849" stroke-width="3"/>
+    <path d="M27 130h95M30 136h89M33 142h84" stroke="#9c7157" stroke-width="2"/>
+    <path d="M38 119h25v-18h29v18h25v13H38z" fill="url(#trainBody)" stroke="#b7463b" stroke-width="2"/>
+    <path d="M92 101h18v-11h9l8 11v20H92z" fill="#ee7549" stroke="#b7463b" stroke-width="2"/>
+    <path d="M113 91h7l5 10h-12z" fill="#5e635a"/>
+    <path d="M43 105h14v10H43zM65 105h14v10H65zM97 105h9v10h-9z" fill="#9ad5d7" stroke="#a7443b" stroke-width="1.5"/>
+    <circle cx="52" cy="126" r="6" fill="#fff1ba" stroke="#a7443b" stroke-width="2"/><circle cx="102" cy="126" r="6" fill="#fff1ba" stroke="#a7443b" stroke-width="2"/>
+    <circle cx="52" cy="126" r="2" fill="#a7443b"/><circle cx="102" cy="126" r="2" fill="#a7443b"/>
+  </g>
+  <path d="M38 82h23" stroke="#fff2cc" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+
+  <!-- mid-right mechanical clue hut -->
+  <g filter="url(#shadow)">
+    <path d="M278 147h69v58h-69z" fill="url(#houseWall)" stroke="#c69849" stroke-width="2"/>
+    <path d="M268 149l44-35 47 35z" fill="#f5be45" stroke="#c28a39" stroke-width="2"/>
+    <path d="M278 146l34-27 38 27z" fill="#ffe17b" opacity=".75"/>
+    <path d="M284 158h17v16h-17zM324 158h17v16h-17z" fill="#8cc9cd" stroke="#c69849" stroke-width="1.5"/>
+    <path d="M307 177h17v28h-17z" fill="#cf7e4e" stroke="#a76743" stroke-width="2"/>
+    <circle cx="319" cy="191" r="2.5" fill="#f8df7a"/>
+    <path d="M343 132v-16h8v17" fill="#c69849"/>
+    <path d="M337 117h20l-10-8z" fill="#e5a439"/>
+  </g>
+  <g transform="translate(273 138) scale(.75)" filter="url(#softShadow)"><use xlink:href="#gear"/></g>
+  <g transform="translate(349 190) scale(.62)" filter="url(#softShadow)"><use xlink:href="#gear"/></g>
+  <path d="M292 181h15M329 181h10M286 184h18" stroke="#d5a545" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+
+  <!-- lower-left time dock and boat -->
+  <g filter="url(#shadow)">
+    <path d="M37 287h78v13H37z" fill="url(#dockWood)" stroke="#247a78" stroke-width="2"/>
+    <path d="M44 300v35M60 300v30M105 300v34M114 300v27" stroke="#287f79" stroke-width="5" stroke-linecap="round"/>
+    <path d="M33 286h86M40 280h78M48 274h72" stroke="#6ad1ba" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <path d="M58 268h66l-10 18H68z" fill="#e67b51" stroke="#a85049" stroke-width="2"/>
+    <path d="M67 267h48l-6-9H73z" fill="#f3d873" stroke="#bd8a45" stroke-width="2"/>
+    <path d="M88 258v-29" stroke="#3f8f86" stroke-width="3"/>
+    <path d="M90 230l22 26H90z" fill="#f5e39e" stroke="#4c978c" stroke-width="2"/>
+    <path d="M57 270h68" stroke="#fff0b3" stroke-width="3" stroke-linecap="round" opacity=".78"/>
+  </g>
+  <path d="M30 319c17 7 31 7 46 0M122 325c13-6 25-7 38-1M17 332c16 7 31 7 46 1" fill="none" stroke="#a4e5df" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+
+  <!-- discovery trail and small clues -->
+  <g transform="translate(138 149) rotate(12) scale(.75)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(153 163) rotate(18) scale(.75)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(173 180) rotate(25) scale(.75)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(198 198) rotate(34) scale(.72)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(225 219) rotate(44) scale(.72)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(236 248) rotate(65) scale(.7)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(220 272) rotate(92) scale(.7)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(187 292) rotate(120) scale(.7)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(145 311) rotate(145) scale(.7)"><use xlink:href="#footprint"/></g>
+  <g transform="translate(118 329) rotate(160) scale(.7)"><use xlink:href="#footprint"/></g>
+  <path d="M143 231c6-8 16-8 22 0l-11 10z" fill="#f1c45c" stroke="#c8983f" stroke-width="1.5"/>
+  <path d="M146 229l8 3 6-3" fill="none" stroke="#fff0ac" stroke-width="1.5"/>
+  <circle cx="256" cy="92" r="7" fill="#f1c45c" stroke="#bd8c3c" stroke-width="1.5"/>
+  <path d="M253 92l3 3 5-7" fill="none" stroke="#fff5c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- foreground leaf accents -->
+  <path d="M16 191c13-10 25-7 29 2-11 2-19 1-29-2zM365 300c-10-8-19-6-22 2 8 1 15 0 22-2z" fill="#76b879"/>
+  <path d="M18 191c8-1 16 0 24 2M343 302c7-1 14-1 22-2" stroke="#4b9d6f" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

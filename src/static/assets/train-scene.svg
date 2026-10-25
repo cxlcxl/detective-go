@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 230" role="img" aria-label="A storybook forest station with a small train and an owl station master waving">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f9f6ee"/>
+      <stop offset="1" stop-color="#efead5"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9bc47a"/>
+      <stop offset="1" stop-color="#6c9d65"/>
+    </linearGradient>
+    <linearGradient id="train" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cca079"/>
+      <stop offset="1" stop-color="#c16d5b"/>
+    </linearGradient>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d7c495"/>
+      <stop offset="1" stop-color="#c6a068"/>
+    </linearGradient>
+    <filter id="sceneShadow" x="-20%" y="-25%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#49684e" flood-opacity=".22"/>
+    </filter>
+    <g id="tree">
+      <path d="M-4 31h8l3 22h-14z" fill="#8c6345"/>
+      <path d="M0-33c-17 1-23 12-17 23-13 3-15 20-2 25 0 11 14 15 22 7 9 8 24 2 23-10 12-3 11-21 0-24 5-12-10-22-19-18C5-32 3-33 0-33z" fill="#5b9a62" stroke="#477e59" stroke-width="2"/>
+      <path d="M-12-21c7-8 17-8 24-2-5 0-9 4-11 8-5-3-8-5-13-6z" fill="#90c579" opacity=".75"/>
+    </g>
+    <g id="star">
+      <path d="M0-7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#ccb477"/>
+    </g>
+  </defs>
+
+  <rect width="390" height="230" rx="18" fill="url(#sky)"/>
+  <!-- calm upper sky is intentionally left open for page copy -->
+  <use href="#star" x="52" y="32" opacity=".74"/>
+  <use href="#star" transform="translate(334 38) scale(.75)" opacity=".62"/>
+  <circle cx="276" cy="33" r="11" fill="#d9c79b" opacity=".55"/>
+  <path d="M0 113c38-33 68-27 105-10 27-28 72-34 106-13 31-20 67-11 92 11 31-19 67-12 87 10v66H0z" fill="#8db676" opacity=".68"/>
+  <path d="M0 137c47-22 79-19 117 1 36-20 77-19 112 2 36-18 76-12 108 9 19-4 37-3 53 4v43H0z" fill="url(#hill)"/>
+
+  <g filter="url(#sceneShadow)">
+    <!-- station house -->
+    <path d="M268 96h75v62h-75z" fill="#d7c397" stroke="#ba874a" stroke-width="2"/>
+    <path d="M257 98l48-30 48 30z" fill="#c16e5c" stroke="#a94e40" stroke-width="2"/>
+    <path d="M266 96h79" stroke="#e0cfaf" stroke-width="4" opacity=".8"/>
+    <rect x="281" y="119" width="20" height="25" rx="2" fill="#8cc0b0" stroke="#477f71" stroke-width="2"/>
+    <rect x="312" y="119" width="20" height="25" rx="2" fill="#8cc0b0" stroke="#477f71" stroke-width="2"/>
+    <path d="M291 120v23m31-23v23" stroke="#477f71" stroke-width="2"/>
+    <path d="M274 106h63" stroke="#cda67b" stroke-width="2" stroke-dasharray="2 5"/>
+
+    <!-- train -->
+    <path d="M31 134h143v31H31z" fill="url(#train)" stroke="#a54c3f" stroke-width="2"/>
+    <path d="M174 116h46c12 0 20 8 20 20v29h-66z" fill="url(#engine)" stroke="#9d683c" stroke-width="2"/>
+    <path d="M220 103h14v16h-14z" fill="#5a8061" stroke="#476c53" stroke-width="2"/>
+    <path d="M216 99h22" stroke="#476c53" stroke-width="4" stroke-linecap="round"/>
+    <path d="M168 126h13v39h-13z" fill="#c7a66c" stroke="#9d683c" stroke-width="2"/>
+    <circle cx="232" cy="137" r="11" fill="#e3d8b7" stroke="#9d683c" stroke-width="2"/>
+    <circle cx="231" cy="137" r="4" fill="#cdaf7a"/>
+    <path d="M43 142h30v14H43zm41 0h30v14H84zm41 0h30v14h-30z" fill="#9bd1be" stroke="#4e8375" stroke-width="2"/>
+    <path d="M58 143v12m41-12v12m41-12v12" stroke="#4e8375" stroke-width="2"/>
+    <rect x="19" y="126" width="17" height="39" rx="8" fill="#c58665" stroke="#a54c3f" stroke-width="2"/>
+    <circle cx="27" cy="133" r="3" fill="#e3d8b7"/>
+    <circle cx="62" cy="173" r="12" fill="#4e6b57" stroke="#304b41" stroke-width="3"/>
+    <circle cx="143" cy="173" r="12" fill="#4e6b57" stroke="#304b41" stroke-width="3"/>
+    <circle cx="199" cy="173" r="12" fill="#4e6b57" stroke="#304b41" stroke-width="3"/>
+    <circle cx="62" cy="173" r="4" fill="#d0ddbd"/><circle cx="143" cy="173" r="4" fill="#d0ddbd"/><circle cx="199" cy="173" r="4" fill="#d0ddbd"/>
+    <path d="M28 164h206" stroke="#dac89e" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- owl station master -->
+    <ellipse cx="276" cy="183" rx="22" ry="5" fill="#527d5a" opacity=".35"/>
+    <path d="M260 153c-3 10-2 23 3 29 5 6 19 6 25 0 5-6 6-19 3-29z" fill="#7f4e3b" stroke="#633c34" stroke-width="1.8"/>
+    <path d="M263 168c6 5 16 5 23 0v14h-23z" fill="#c7a06c" stroke="#a3683e" stroke-width="1.4"/>
+    <path d="M259 150c-3-13 3-25 16-29 13 4 19 16 16 29-3 12-9 17-16 17s-13-5-16-17z" fill="#be7755" stroke="#633c34" stroke-width="1.8"/>
+    <path d="M260 150c5-7 11-10 15-10s10 3 15 10c-4 8-9 12-15 12s-11-4-15-12z" fill="#ddcba7"/>
+    <ellipse cx="270" cy="148" rx="7" ry="8" fill="#f2eede"/><ellipse cx="280" cy="148" rx="7" ry="8" fill="#f2eede"/>
+    <circle cx="270" cy="149" r="3.4" fill="#30483d"/><circle cx="280" cy="149" r="3.4" fill="#30483d"/>
+    <circle cx="271" cy="148" r="1.3" fill="#ffffff"/><circle cx="281" cy="148" r="1.3" fill="#ffffff"/>
+    <path d="M274 156l3-4 3 4-3 5z" fill="#be8655"/>
+    <path d="M258 133c4-10 11-16 18-16 7 0 14 6 18 16-10-3-25-3-36 0z" fill="#4a9665" stroke="#2d654d" stroke-width="2"/>
+    <path d="M256 134c10 3 27 2 40-3 2 3 3 6 2 8-15 6-30 6-43 1-1-2 0-4 1-6z" fill="#347958"/>
+    <path d="M259 159l-14 10m36-10 15-12" stroke="#633c34" stroke-width="5" stroke-linecap="round"/>
+    <path d="M296 146l8-7" stroke="#633c34" stroke-width="5" stroke-linecap="round"/>
+    <path d="M304 139l6 3" stroke="#c38f60" stroke-width="4" stroke-linecap="round"/>
+    <path d="M257 181c-7 2-10 5-11 8 5 3 10 2 14-1 4 3 9 3 13 0-1-4-6-7-11-7z" fill="#c38f60"/>
+  </g>
+
+  <!-- foreground rails and track -->
+  <path d="M0 191h390M0 204h390" stroke="#7c674a" stroke-width="4"/>
+  <path d="M15 183v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33m32-33v33" stroke="#a68558" stroke-width="4"/>
+  <path d="M0 216h390" stroke="#5f8a5b" stroke-width="8" opacity=".38"/>
+  <use href="#tree" transform="translate(18 132) scale(.55)"/>
+  <use href="#tree" transform="translate(373 127) scale(.6)"/>
+</svg>

@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小侦探奇遇记 · 小程序设计稿</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #25352e;
+      --muted: #687970;
+      --paper: #fff9eb;
+      --white: #fff;
+      --green: #286649;
+      --green-soft: #e4f1d7;
+      --coral: #df5f45;
+      --coral-soft: #fff0dc;
+      --yellow: #f0bd42;
+      --yellow-soft: #fff4cf;
+      --blue: #328da6;
+      --blue-soft: #e4f5f6;
+      --line: #e9e5d7;
+      --serif: "Songti SC", "Noto Serif CJK SC", Georgia, serif;
+      --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 30px 26px 72px; }
+    .masthead {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+      padding: 4px 2px 24px; border-bottom: 1px solid #dce5de;
+    }
+    .eyebrow { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 0; }
+    h1 { margin: 7px 0 0; font: 700 30px/1.2 var(--serif); }
+    .masthead p { max-width: 440px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .route { display: flex; flex-wrap: wrap; gap: 8px; padding: 18px 0 30px; }
+    .route a {
+      color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 650;
+      padding: 8px 12px; background: var(--white); border: 1px solid var(--line); border-radius: 6px;
+    }
+    .route a:hover, .route a:focus-visible { border-color: var(--green); outline: 2px solid #b8d5c4; }
+    .section-head { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; }
+    .section-head h2 { margin: 0; font: 700 20px/1.25 var(--serif); }
+    .section-head span { color: var(--muted); font-size: 12px; }
+    .board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 24px; }
+    .sample { min-width: 0; scroll-margin-top: 20px; }
+    .sample-title { display: flex; align-items: baseline; gap: 8px; margin: 0 0 10px 4px; }
+    .sample-title strong { font-size: 13px; }
+    .sample-title span { color: var(--muted); font-size: 11px; }
+    .device {
+      width: min(100%, 360px); margin: 0 auto; padding: 9px;
+      background: #1d2823; border-radius: 30px; box-shadow: 0 18px 44px #23382d1f;
+    }
+    .screen {
+      height: 720px; overflow: hidden; position: relative; display: flex; flex-direction: column;
+      background: #fff; border-radius: 22px;
+    }
+    .status { height: 30px; flex: 0 0 30px; display: flex; justify-content: space-between; padding: 8px 18px 0; font-size: 10px; font-weight: 700; }
+    .status .signal { letter-spacing: 1px; }
+    .appbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 18px 12px; }
+    .wordmark { color: var(--green); font: 700 15px/1 var(--serif); }
+    .profile, .small-action { min-height: 34px; display: inline-flex; align-items: center; gap: 7px; padding: 0 10px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: #fff; font: 600 11px var(--sans); }
+    .avatar { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--coral); font-size: 10px; }
+    .content { flex: 1; min-height: 0; overflow: hidden; padding: 0 17px; }
+    .greeting { margin: 6px 0 4px; color: var(--muted); font-size: 11px; }
+    h3 { margin: 0; font: 700 23px/1.25 var(--serif); }
+    .subhead { margin: 6px 0 14px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .feature {
+      position: relative; height: 174px; overflow: hidden; display: flex; align-items: flex-end;
+      padding: 15px; border-radius: 7px; background: #416853;
+    }
+    .feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .76; }
+    .feature::after { content: ""; position: absolute; inset: 30% 0 0; background: linear-gradient(transparent, #172a20c9); }
+    .feature-copy { position: relative; z-index: 1; color: #fff; }
+    .feature-copy small { display: block; margin-bottom: 5px; font-size: 10px; }
+    .feature-copy strong { display: block; font: 700 20px/1.25 var(--serif); }
+    .feature-copy span { display: block; margin-top: 4px; font-size: 11px; opacity: .92; }
+    .section-label { margin: 17px 0 8px; font-size: 12px; font-weight: 750; }
+    .activity-list { display: grid; gap: 7px; }
+    .activity {
+      display: grid; grid-template-columns: 35px 1fr auto; align-items: center; gap: 9px;
+      min-height: 60px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+    }
+    .subject-mark { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 6px; font-size: 12px; font-weight: 800; }
+    .subject-mark.eng { color: #a94f3b; background: var(--coral-soft); }
+    .subject-mark.math { color: #956600; background: var(--yellow-soft); }
+    .subject-mark.hist { color: #326f85; background: var(--blue-soft); }
+    .activity strong { display: block; font-size: 12px; }
+    .activity small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .duration { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .bottom-nav { flex: 0 0 59px; display: flex; justify-content: space-around; border-top: 1px solid var(--line); background: #fff; }
+    .nav-item { min-width: 66px; padding-top: 9px; color: #8a968f; text-align: center; font-size: 10px; line-height: 1.55; }
+    .nav-item b { display: block; color: currentColor; font-size: 11px; }
+    .nav-item.active { color: var(--green); font-weight: 750; }
+    .lesson-top { display: flex; align-items: center; gap: 10px; padding: 3px 0 14px; }
+    .back { color: var(--green); font-size: 12px; font-weight: 700; }
+    .step { margin-left: auto; color: var(--muted); font-size: 10px; }
+    .lesson-image { width: 100%; height: 168px; display: block; object-fit: cover; border-radius: 7px; }
+    .goal { margin: 12px 0; padding: 10px 11px; border-left: 3px solid var(--coral); background: var(--coral-soft); font-size: 11px; line-height: 1.6; }
+    .goal b { display: block; margin-bottom: 2px; color: #a94f3b; font-size: 10px; }
+    .phrase { margin: 12px 0 8px; padding: 13px; border: 1px solid var(--line); border-radius: 7px; text-align: center; }
+    .phrase strong { display: block; color: var(--green); font: 700 19px/1.3 Georgia, serif; }
+    .phrase small { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .row-actions { display: flex; gap: 8px; margin: 10px 0; }
+    .button {
+      min-height: 44px; display: flex; flex: 1; align-items: center; justify-content: center; gap: 6px;
+      border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: #fff; font: 700 11px var(--sans);
+    }
+    .button.primary { color: #fff; border-color: var(--green); background: var(--green); }
+    .helper { color: var(--muted); text-align: center; font-size: 10px; }
+    .choice-row { display: flex; gap: 7px; margin: 11px 0; }
+    .choice { flex: 1; padding: 9px 6px; border: 1px solid var(--line); border-radius: 6px; text-align: center; font-size: 10px; }
+    .choice.active { color: #986700; border-color: #e8c66d; background: var(--yellow-soft); }
+    .math-visual { height: 164px; position: relative; overflow: hidden; border-radius: 7px; background: #ead5ad; }
+    .math-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .challenge { margin-top: 12px; font: 700 17px/1.4 var(--serif); }
+    .instruction { margin: 7px 0 10px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .materials { display: flex; gap: 7px; }
+    .material { flex: 1; padding: 9px 5px; border: 1px solid var(--line); border-radius: 6px; text-align: center; font-size: 10px; }
+    .material b { display: block; margin-bottom: 3px; color: var(--green); font-size: 13px; }
+    .math-note { margin: 11px 0; padding: 9px 10px; border-radius: 6px; color: #74540a; background: var(--yellow-soft); font-size: 10px; line-height: 1.55; }
+    .timeline-intro { margin: 7px 0 13px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .era { display: flex; align-items: center; justify-content: space-between; padding: 9px 10px; border-radius: 6px; background: var(--blue-soft); }
+    .era strong { color: #326f85; font: 700 14px var(--serif); }
+    .era span { color: #527483; font-size: 10px; }
+    .lanes { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 11px 0 12px; }
+    .lanes::before { content: ""; position: absolute; top: 5px; bottom: 5px; left: 50%; width: 1px; background: #dce5de; }
+    .lane { padding: 0 2px; }
+    .lane h4 { margin: 0 0 7px; color: var(--green); font-size: 10px; }
+    .lane.world h4 { color: var(--blue); }
+    .event { min-height: 125px; padding: 9px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+    .event small { display: block; margin-bottom: 6px; color: var(--muted); font-size: 9px; }
+    .event strong { display: block; font: 700 13px/1.35 var(--serif); }
+    .event p { margin: 5px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+    .question { margin: 8px 0 10px; padding: 10px; border-radius: 6px; background: var(--yellow-soft); font-size: 11px; line-height: 1.55; }
+    .source-note { color: var(--muted); font-size: 9px; line-height: 1.45; }
+    .parent-head { padding: 5px 0 12px; }
+    .parent-head h3 { font-size: 21px; }
+    .parent-head p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+    .child-switch { display: flex; gap: 7px; margin: 7px 0 14px; }
+    .child-chip { flex: 1; padding: 9px; border: 1px solid var(--line); border-radius: 6px; text-align: center; font-size: 11px; }
+    .child-chip.active { color: var(--green); border-color: #98c4aa; background: var(--green-soft); font-weight: 750; }
+    .parent-label { margin: 13px 0 8px; font-size: 12px; font-weight: 750; }
+    .record { padding: 10px 0; border-top: 1px solid var(--line); }
+    .record-top { display: flex; justify-content: space-between; gap: 8px; }
+    .record-top strong { font-size: 11px; }
+    .record-top small { color: var(--muted); font-size: 9px; white-space: nowrap; }
+    .record p { margin: 5px 0 0; color: #52635b; font-size: 10px; line-height: 1.55; }
+    .parent-tip { margin-top: 12px; padding: 12px; border-radius: 6px; background: var(--green-soft); }
+    .parent-tip b { display: block; margin-bottom: 4px; color: var(--green); font-size: 11px; }
+    .parent-tip p { margin: 0; color: #456355; font-size: 10px; line-height: 1.55; }
+    .footnote { max-width: 760px; margin: 26px 2px 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+    @media (max-width: 980px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) {
+      .wrap { padding: 20px 14px 46px; }
+      .masthead { display: block; }
+      .masthead p { margin-top: 10px; }
+      .board { grid-template-columns: 1fr; gap: 24px; }
+      .device { width: min(100%, 360px); }
+      .route { padding-bottom: 22px; }
+    }
+    /* The prototype uses local vector artwork so every scene also works offline. */
+    body { background-image: radial-gradient(#c9ba9528 1px,transparent 1px); background-size: 14px 14px; }
+    button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    button { cursor: pointer; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #2f805b; outline-offset: 3px; }
+    button:active { transform: translateY(2px); }
+    .wrap { max-width: 1320px; padding-top: 42px; }
+    .masthead { border-bottom: 2px solid #d8d5b8; padding-bottom: 23px; }
+    .eyebrow { font-size: 11px; letter-spacing: 2px; }
+    h1 { font: 900 39px/1.35 var(--sans); letter-spacing: -1px; color: #284c38; }
+    .masthead p { max-width: 460px; color: #617160; font-size: 13px; }
+    .route a { border-radius: 20px; padding: 10px 16px; background: #fffdf6; border-color: #dedbc5; }
+    .route a:first-child { background: var(--green); border-color: var(--green); color: white; }
+    .section-head h2 { font-family: var(--sans); font-size: 16px; }
+    .board { gap: 34px 26px; }
+    .sample-title { gap: 8px; margin: 0 0 13px 3px; }
+    .sample-title strong { font-size: 13px; }
+    .sample-title span { font-size: 10px; }
+    .device { width: min(100%,406px); background:#f5f2e4; padding:8px; border:1px solid #d9d7c8; border-radius:33px; box-shadow:0 12px 35px #394e3a14; }
+    .screen { background: #fffcf3; border: 1px solid #e7e3d4; height:844px; border-radius:25px; }
+    .status { height:35px; flex-basis:35px; font-size:11px; padding:11px 23px 0; }
+    .appbar { padding:8px 19px 12px; }
+    .wordmark { font:850 18px var(--sans); letter-spacing:-.5px; }
+    .profile { background:#fffdf5; min-height:38px; border-radius:22px; font-size:11px; padding:0 8px 0 4px; }
+    .avatar { background:#e7ba6b; color:#4d4127; font-weight:800; height:28px; width:28px; }
+    .content { padding:0 20px; }
+    h3 { font:850 26px/1.35 var(--sans); letter-spacing:-.7px; }
+    .subhead { font-size:12px; line-height:1.6; margin:6px 0 10px; }
+    .home-content { padding:0; background:#fffbee; }
+    .home-content h3, .home-content>.subhead { margin-left:20px; margin-right:20px; }
+    .case-kicker { display:flex; justify-content:space-between; padding:9px 21px 7px; color:#7c7555; font-size:10px; font-weight:700; }
+    .case-kicker span:first-child { color:#9d5b22; }
+    .map-scene { position:relative; margin:0; height:285px; overflow:hidden; background:#fff5d5; }
+    .map-scene>img { width:100%; height:100%; object-fit:fill; }
+    .map-tag { position:absolute; padding:6px 11px; color:#543e29; background:#fffef2; border:1px solid #dfd4ae; border-radius:12px; box-shadow:0 3px 0 #d8c99b5e; font-size:11px; font-weight:800; text-decoration:none; }
+    .tag-train { left:8%; top:40%; }
+    .tag-house { right:5%; top:57%; }
+    .tag-dock { left:10%; bottom:1%; }
+    .clue-counter { position:absolute; top:6px; right:16px; background:#fffdf2; padding:6px 11px; border-radius:15px; font-size:10px; color:#5d6d50; }
+    .clue-counter b { color:#386a43; }
+    .case-prompt { display:flex; align-items:center; gap:10px; margin:10px 20px 8px; }
+    .case-stamp { display:grid; place-items:center; width:34px; height:34px; flex-shrink:0; border:2px solid #d7b15e; border-radius:10px; color:#9c6d26; background:#ffe8a9; font-size:16px; transform:rotate(-8deg); }
+    .case-prompt b { display:block; font-size:12px; }
+    .case-prompt small { display:block; color:#78805f; font-size:10px; margin-top:3px; }
+    .investigation-list { display:grid; gap:7px; margin:0 20px; }
+    .investigation { min-height:54px; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:10px; border:1px solid #f0dcc1; border-bottom-width:3px; border-radius:14px; background:#fff8e9; padding:7px 11px; }
+    .investigation.puzzle { border-color:#e8d99e; background:#fff5cf; }
+    .investigation.river { border-color:#c6ded1; background:#eef5e5; }
+    .investigation b { display:block; font-size:12px; }
+    .investigation small { display:block; font-size:10px; color:#65705d; margin-top:3px; }
+    .destination-icon { width:32px; height:32px; display:grid; place-items:center; color:#a3592c; background:#ffe2af; border:1px solid #e8be79; border-radius:10px; font:bold 20px Georgia,serif; }
+    .puzzle .destination-icon { color:#8d6d1c; background:#fce292; }
+    .river .destination-icon { color:#346956; background:#cbe2c3; font:800 14px var(--sans); }
+    .go { margin-left:auto; color:#688261; font-size:23px; font-weight:500; }
+    .bottom-nav { flex-basis:68px; border-color:#e8e3cc; background:#fffdf6; padding:0 10px 5px; }
+    .nav-item { min-width:70px; font-size:10px; padding-top:12px; color:#6e7d68; }
+    .nav-item b { font-size:12px; }
+    .nav-item.active { position:relative; color:#285c40; }
+    .nav-item.active:before { content:""; position:absolute; width:26px; height:3px; background:#41865a; border-radius:4px; top:0; left:calc(50% - 13px); }
+    .lesson-top { height:42px; padding:0; }
+    .back { display:inline-flex; align-items:center; min-height:36px; }
+    .step { color:#70806c; font-size:11px; }
+    .case-banner { padding:12px 0 10px; }
+    .case-banner>span { display:inline-block; color:#a05f2d; background:#fff0d7; border:1px solid #ebd4b1; padding:5px 9px; font-size:10px; font-weight:700; border-radius:6px; }
+    .case-banner>b { display:block; font-size:26px; letter-spacing:-1px; margin-top:10px; }
+    .case-banner>small { display:block; font-size:12px; color:#687866; margin-top:6px; }
+    .station-scene { margin:4px -20px 0; height:212px; position:relative; }
+    .station-scene>img { width:100%; height:100%; object-fit:cover; }
+    .speech-bubble { position:absolute; top:11px; left:15px; max-width:71%; padding:10px 12px; background:#fffdf4; border:1px solid #dbc8a5; border-radius:13px 13px 0 13px; color:#395138; box-shadow:0 4px 0 #d4bc8540; font:bold 15px Georgia,serif; }
+    .speech-bubble small { display:block; font:10px var(--sans); color:#768068; margin-top:4px; }
+    .goal { border:0; background:transparent; padding:0; margin:13px 0 9px; font-size:12px; }
+    .goal b { font-size:10px; color:#8a612e; margin-bottom:5px; }
+    .phrase { background:#fff8e5; border-color:#e8d49d; border-radius:14px; padding:14px 6px; margin:10px 0; }
+    .phrase strong { color:#3b5e43; font-size:20px; }
+    .phrase small { font-size:11px; }
+    .button { min-height:46px; border-radius:12px; border-color:#d5dfca; color:#386544; background:#f3f8e9; font-size:12px; text-decoration:none; }
+    .button.primary { border:1px solid #214d34; border-bottom:4px solid #214d34; background:#397553; color:white; font-weight:750; }
+    .row-actions { gap:9px; }
+    .evidence-reply { display:flex; align-items:center; gap:8px; padding:10px 0; }
+    .reply-owl { width:29px; height:29px; flex-shrink:0; background:#f4d4a0; border-radius:50%; color:#835b32; display:grid; place-items:center; font-weight:800; font-size:12px; }
+    .evidence-reply b { display:block; color:#426846; font-size:11px; }
+    .evidence-reply small { display:block; color:#6e7b66; font-size:10px; line-height:1.6; margin-top:4px; }
+    .case-progress { display:flex; align-items:center; gap:6px; color:#557a4b; border-top:1px dashed #cfdabb; padding:12px 0; font-size:10px; }
+    .case-progress i { width:7px; height:7px; background:#659455; border-radius:50%; }
+    .case-progress span:last-child { margin-left:auto; }
+    a.case-progress { text-decoration:none; }
+    img.reply-owl { object-fit:contain; background:transparent; border-radius:0; height:44px; width:38px; }
+    .find-object.found { border-color:#548457; background:#e5f2d5; }
+    .puzzle-banner>span { color:#846214; background:#fff1c5; border-color:#e5d393; }
+    .chest-scene { position:relative; height:118px; background:radial-gradient(ellipse at bottom,#e8eab4,transparent 66%); overflow:hidden; margin:0 -20px; }
+    .chest { position:absolute; width:127px; height:72px; background:linear-gradient(90deg,#ac713f,#d49b50 23%,#d49b50 73%,#ac713f); border:3px solid #a76e3c; border-radius:7px 7px 13px 13px; left:calc(50% - 63px); top:44px; transform:rotate(-4deg); box-shadow:0 9px 0 #92a65b3b; }
+    .chest:before,.chest:after { content:""; position:absolute; width:12px; height:75px; background:#f4d274; top:-4px; border:2px solid #bf8f3d; }
+    .chest:before { left:15px; }.chest:after { right:15px; }
+    .chest-lid { position:absolute; inset:-27px -4px auto; height:39px; border:3px solid #ad713c; border-radius:28px 28px 3px 3px; background:linear-gradient(#e7b263,#cc8c47); z-index:1; }
+    .chest-lock { position:absolute; z-index:2; left:calc(50% - 13px); top:8px; height:33px; width:26px; background:#ffe38c; border:2px solid #a77b34; border-radius:5px; text-align:center; padding-top:4px; color:#8a632b; font-size:17px; font-weight:800; }
+    .sunburst { width:200px; height:200px; border-radius:50%; background:repeating-conic-gradient(from 5deg,#f5d67433 0 15deg,transparent 15deg 35deg); position:absolute; left:calc(50% - 100px); top:-22px; }
+    .floating-star { position:absolute; color:#cd9e36; font-size:25px; }.s1 { left:70px; top:29px; }.s2 { right:75px; top:62px; }
+    .gear-puzzle { display:flex; gap:6px; padding:12px 0 6px; }
+    .gear-tile { flex:1; background:#f9edc7; border:1px solid #e5ce89; border-bottom:3px solid #dac38b; border-radius:11px; text-align:center; padding:10px 0 7px; }
+    .gear-tile b { font:800 24px Georgia,serif; color:#806024; }
+    .gear-tile small { display:block; font-size:9px; margin-top:4px; color:#847546; }
+    .gear-stack { height:43px; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:1px; margin-bottom:6px; }
+    .gear-stack>span { display:flex; gap:1px; }
+    .gear-stack i { display:block; width:10px; height:10px; background:#b9893e; position:relative; clip-path:polygon(38% 0,62% 0,66% 19%,79% 12%,92% 29%,81% 42%,100% 45%,100% 62%,80% 66%,88% 81%,70% 93%,58% 81%,55% 100%,38% 100%,34% 80%,18% 88%,7% 70%,19% 58%,0 55%,0 38%,20% 34%,12% 18%,30% 7%,42% 19%); }
+    .gear-stack i:after { content:""; width:3px; height:3px; border-radius:50%; background:#f9edc7; position:absolute; left:3.5px; top:3.5px; }
+    .gear-stack.unknown { justify-content:center; color:#658452; font:bold 23px Georgia,serif; }
+    .gear-tile.missing { background:#e4edcf; border:1px dashed #83a06a; }
+    .gear-tile.missing b { color:#416d45; }
+    .challenge { margin-top:14px; font:800 19px/1.4 var(--sans); letter-spacing:-.4px; }
+    .instruction { font-size:12px; color:#61715b; }
+    .answer-options { display:flex; gap:10px; margin:12px 0 6px; }
+    .answer { min-height:57px; flex:1; background:#fffdf5; border:2px solid #e4d8b5; border-bottom:4px solid #d7c99b; border-radius:13px; font:700 25px Georgia,serif; color:#6d5e3c; }
+    .answer[aria-pressed="true"] { border-color:#4b8454; background:#e7f2d6; color:#326139; }
+    .hint-button { border:0; background:transparent; padding:10px 0; color:#65764c; font-size:11px; text-decoration:underline; }
+    .math-feedback { min-height:34px; font-size:11px; line-height:1.6; color:#6a785d; margin:3px 0 8px; }
+    .history-banner>span { background:#e1f0e6; border-color:#bfd9c8; color:#397258; }
+    .time-river-title { display:flex; justify-content:space-between; align-items:center; background:#e5f2e5; padding:10px 15px; border-radius:11px; margin:5px 0; font-size:12px; color:#37634d; }
+    .time-river-title b { font-size:10px; color:#547864; font-weight:500; }
+    .timeline-story { height:348px; position:relative; padding-top:4px; overflow:hidden; }
+    .river-drawing { position:absolute; inset:0; width:100%; height:100%; }
+    .river-date { position:relative; z-index:1; width:max-content; margin:8px auto 8px; padding:5px 10px; background:#fffdf4; border:1px solid #9bcbb8; border-radius:13px; color:#47745b; font-size:10px; }
+    .era-row { display:grid; grid-template-columns:1fr 1fr; position:relative; gap:45px; margin:0 4px; }
+    .event-card { border:1px solid #ded5b6; border-bottom:3px solid #d9cc9e; background:#fffaf0; border-radius:12px; padding:9px 8px 10px; text-align:center; }
+    .event-card small { display:block; font-size:9px; color:#7a785f; margin:6px 0 4px; }
+    .event-card b { display:block; font-size:11px; white-space:nowrap; }
+    .historic-object { display:inline-grid; place-items:center; width:37px; height:36px; color:#8a6536; font:800 22px Georgia,serif; border:2px solid #c4a171; background:#e8ce9b; border-radius:5px; box-shadow:3px 3px 0 #c8b17955; }
+    .bone { border-radius:10px 14px 6px 15px; transform:rotate(-8deg); background:#eadfbd; }
+    .scroll { border-radius:4px 12px 3px 8px; background:#efd9a1; }
+    .paper { background:#fff5d8; border-color:#d2c39d; border-radius:1px; transform:rotate(7deg); font:700 19px var(--serif); }
+    .stone { border-color:#a6b2a1; color:#657b6a; background:#ced3bb; border-radius:7px 12px 3px 2px; }
+    .date-b { margin-top:15px; }
+    .timeline-question { display:flex; gap:8px; align-items:center; background:#f7ecd0; padding:11px; border:1px solid #e4d8ae; border-radius:12px; margin:5px 0 10px; }
+    .evidence-mark { font:bold 22px Georgia,serif; background:#f3d784; border:1px solid #c6a95a; border-radius:50%; width:30px; height:30px; display:grid; place-items:center; flex-shrink:0; color:#7b632e; }
+    .timeline-question b { display:block; font-size:11px; }.timeline-question small { display:block; font-size:10px; line-height:1.6; color:#6d7157; margin-top:3px; }
+    .source-note { margin:9px 0; color:#6f7965; font-size:9px; text-align:center; }
+    .sister-avatar { background:#a9d8bf; color:#345e42; }
+    .sister-map { height:284px; position:relative; overflow:hidden; margin:0; }
+    .sister-map>img:first-child { width:100%; height:100%; object-fit:fill; }
+    .sister-map .owl-avatar { position:absolute; width:127px; height:143px; bottom:12px; right:19px; transform:rotate(4deg); }
+    .big-prompt { display:flex; align-items:center; gap:9px; min-height:56px; width:calc(100% - 36px); margin:11px 18px; padding:10px; color:#4c6744; background:#f0f5dc; border:1px solid #cbd9a4; border-bottom:3px solid #cbd9a4; border-radius:15px; }
+    .big-prompt b { font-size:13px; font-weight:700; }
+    .sound-dot { background:#5e8855; color:#fff; display:grid; place-items:center; width:31px; height:31px; border-radius:50%; font-size:12px; flex-shrink:0; }
+    .sister-objects { display:flex; gap:12px; margin:12px 20px 5px; }
+    .find-object { width:calc((100% - 24px)/3); height:90px; border:2px solid #e4d6b7; border-bottom:5px solid #dcccaa; border-radius:18px; background:#fffdf6; padding:8px; }
+    .find-object>svg { width:100%; height:100%; }
+    .sister-feedback { text-align:center; margin:11px 10px; font-size:12px; color:#5e7553; min-height:20px; }
+    .tiny-reward { display:flex; align-items:center; justify-content:center; gap:8px; margin:7px 20px; padding:6px 0; font-size:11px; color:#7c795a; }
+    .tiny-reward img { height:44px; width:39px; }
+    .parent-head { padding-top:13px; }
+    .parent-head h3 { font:850 25px var(--sans); }
+    .parent-head p { margin-top:7px; font-size:12px; }
+    .child-switch { padding:4px; background:#efefdf; border-radius:14px; gap:4px; }
+    .child-chip { border:0; border-radius:11px; padding:11px; background:transparent; min-height:43px; }
+    .child-chip.active { border:1px solid #d4dcc1; background:#fffdf5; box-shadow:0 2px 3px #52613c12; }
+    .parent-label { padding-top:7px; font-size:14px; }
+    .record { margin:9px 0; padding:13px; background:#fffaf0; border:1px solid #e5ddc5; border-left:4px solid #dfa56c; border-radius:12px; }
+    .record:nth-of-type(5) { border-left-color:#d5b75e; }
+    .record:nth-of-type(6) { border-left-color:#80af9b; }
+    .record-top strong { font-size:12px; }.record p { font-size:11px; margin-top:7px; }
+    .parent-tip { border-radius:13px; background:#eaf1d8; padding:13px; margin-top:14px; }
+    .parent-tip b { font-size:12px; }.parent-tip p { font-size:11px; }
+    .section-label { font-size:12px; }.activity { border-radius:12px; background:#fffdf7; }
+    .footnote { margin-top:32px; max-width:100%; padding-top:17px; border-top:1px solid #ded8bc; }
+    @media (max-width:1100px) { .board { grid-template-columns:repeat(2,minmax(0,1fr)); } .masthead p { max-width:390px; } }
+    @media (max-width:720px) { .board { grid-template-columns:1fr; } .masthead { display:block; } .masthead p { margin-top:10px; max-width:none; } h1 { font-size:31px; } .wrap { padding:26px 14px 40px; } .section-head { flex-wrap:wrap; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="masthead">
+      <div>
+        <div class="eyebrow">家庭共学 · 儿童侦探冒险</div>
+        <h1>小侦探奇遇记</h1>
+      </div>
+      <p>每一次学习，都是一次调查。和猫头鹰探长踏上冒险岛，用英语问线索、用数学解机关、沿着时间长河寻找答案。</p>
+    </header>
+    <nav class="route" aria-label="原型页面">
+      <a href="#home">01 哥哥的案件地图</a><a href="#english">02 英语问线索</a><a href="#math">03 数学解机关</a><a href="#history">04 历史时间河</a><a href="#sister">05 妹妹的奇遇</a><a href="#parent">06 家长证据册</a>
+    </nav>
+    <div class="section-head"><h2>跟着线索出发</h2><span>孩子端与家长端 · 手机屏幕示意</span></div>
+    <section class="board" aria-label="小程序页面设计图">
+      <article class="sample" id="home">
+        <div class="sample-title"><strong>01 首页</strong><span>自己选，今天玩什么</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="appbar"><span class="wordmark">小侦探奇遇记</span><button class="profile"><span class="avatar">哥</span>哥哥 · 8岁　⌄</button></div>
+          <div class="content home-content">
+            <div class="case-kicker"><span>今日新案件</span><span>案件 01</span></div>
+            <h3>星星徽章去哪了？</h3>
+            <p class="subhead">邮车马上出发，猫头鹰探长需要你的帮忙！</p>
+            <div class="map-scene">
+              <img src="assets/detective-world.svg" alt="森林冒险岛地图，火车站、机关屋和时间码头由小河连接">
+              <a class="map-tag tag-train" href="#english">英语线索</a><a class="map-tag tag-house" href="#math">数学机关</a><a class="map-tag tag-dock" href="#history">历史河岸</a>
+              <span class="clue-counter">线索 <b>0</b> / 3</span>
+            </div>
+            <div class="case-prompt"><span class="case-stamp">侦</span><span><b>选一个地点，开始调查！</b><small>三个入口都能找到重要线索</small></span></div>
+            <div class="investigation-list">
+              <a class="investigation station" href="#english"><span class="destination-icon">A</span><span><b>问问火车站长</b><small>开口说英语，听听新线索</small></span><span class="go">›</span></a>
+              <a class="investigation puzzle" href="#math"><span class="destination-icon">2</span><span><b>破解齿轮密码</b><small>看规律、找出宝箱密码</small></span><span class="go">›</span></a>
+              <a class="investigation river" href="#history"><span class="destination-icon">时</span><span><b>沿时间河找证据</b><small>看看古人怎样留下记录</small></span><span class="go">›</span></a>
+            </div>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item active"><b>发现</b>今天</div><div class="nav-item"><b>时间长河</b>历史</div><div class="nav-item"><b>我的</b>小档案</div></nav>
+        </div></div>
+      </article>
+      <article class="sample" id="english">
+        <div class="sample-title"><strong>02 英语开口</strong><span>听一句，再说自己的版本</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="content">
+            <div class="lesson-top"><span class="back">‹ 返回</span><span class="step">英语口语 · 1 / 3</span></div>
+            <div class="case-banner"><span>案件 01 · 车站证词</span><b>问问火车站长</b><small>听一句，跟着说，再换个词试试。</small></div>
+            <div class="station-scene"><img src="assets/train-scene.svg" alt="猫头鹰站长在森林火车站迎接小侦探"><div class="speech-bubble">Did you see a star badge?<small>你有看到星星徽章吗？</small></div></div>
+            <div class="goal"><b>侦探任务</b>跟站长打招呼，问问他有没有看到徽章。</div>
+            <div class="phrase"><strong>Hello! A star?</strong><small>先说“你好！星星？”也可以，试着问一问。</small></div>
+            <div class="row-actions"><button class="button" id="english-listen">▶　听示范</button><button class="button primary" id="english-start">◉　演示开口反馈</button></div>
+            <div class="evidence-reply" aria-live="polite"><img class="reply-owl" src="assets/owl-detective.svg" alt=""><span><b id="english-reply-title">不用说得很完美。</b><small id="english-reply">探长陪你先说一小句，慢慢来就好。</small></span></div>
+            <a class="case-progress" href="#parent"><i></i><span>我的对话线索</span><span>记入证据册　›</span></a>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item active"><b>发现</b>今天</div><div class="nav-item"><b>时间长河</b>历史</div><div class="nav-item"><b>我的</b>小档案</div></nav>
+        </div></div>
+      </article>
+      <article class="sample" id="math">
+        <div class="sample-title"><strong>03 数学挑战</strong><span>动手试，多种办法都能讲</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="content">
+            <div class="lesson-top"><span class="back">‹ 返回</span><span class="step">思维挑战 · 1 / 2</span></div>
+            <div class="case-banner puzzle-banner"><span>案件 01 · 机关小屋</span><b>会长大的齿轮队</b><small>每多一排，就离宝箱近一步。</small></div>
+            <div class="chest-scene" aria-hidden="true"><div class="sunburst"></div><div class="chest"><div class="chest-lid"></div><span class="chest-lock">?</span></div><span class="floating-star s1">✦</span><span class="floating-star s2">✧</span></div>
+            <div class="gear-puzzle" aria-label="齿轮数量依次为1、3、6、10，下一个是多少？">
+              <span class="gear-tile"><span class="gear-stack" aria-hidden="true"><span><i></i></span></span><b>1</b><small>第 1 队</small></span>
+              <span class="gear-tile"><span class="gear-stack" aria-hidden="true"><span><i></i></span><span><i></i><i></i></span></span><b>3</b><small>第 2 队</small></span>
+              <span class="gear-tile"><span class="gear-stack" aria-hidden="true"><span><i></i></span><span><i></i><i></i></span><span><i></i><i></i><i></i></span></span><b>6</b><small>第 3 队</small></span>
+              <span class="gear-tile"><span class="gear-stack" aria-hidden="true"><span><i></i></span><span><i></i><i></i></span><span><i></i><i></i><i></i></span><span><i></i><i></i><i></i><i></i></span></span><b>10</b><small>第 4 队</small></span>
+              <span class="gear-tile missing"><span class="gear-stack unknown" aria-hidden="true">✧</span><b>?</b><small>第 5 队</small></span>
+            </div>
+            <div class="challenge">下一队会有几个齿轮？</div>
+            <p class="instruction">看看每次多了几个。可以画出来，也可以用积木摆一摆。</p>
+            <div class="answer-options"><button class="answer" data-answer="12" aria-pressed="false">12</button><button class="answer" data-answer="15" aria-pressed="false">15</button><button class="answer" data-answer="14" aria-pressed="false">14</button></div>
+            <button class="hint-button" id="math-hint">给我一点小提示　↗</button>
+            <p class="math-feedback" id="math-feedback" aria-live="polite">不用着急，侦探有自己的办法。</p>
+            <button class="button primary" id="unlock" style="width:100%">试着打开宝箱　→</button>
+            <p class="helper" style="margin-top:9px">选对之后，再讲讲你是怎么发现的。</p>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item active"><b>发现</b>今天</div><div class="nav-item"><b>时间长河</b>历史</div><div class="nav-item"><b>我的</b>小档案</div></nav>
+        </div></div>
+      </article>
+      <article class="sample" id="history">
+        <div class="sample-title"><strong>04 历史时间长河</strong><span>中国与世界并行对照</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="content">
+            <div class="lesson-top"><span class="back">‹ 返回</span><span class="step">历史探索 · 古代</span></div>
+            <div class="case-banner history-banner"><span>案件 01 · 旧日密码</span><b>沿时间河找证据</b><small>人们很久以前就想把事情记下来。</small></div>
+            <div class="time-river-title"><span>中国</span><b>同一时期，看看两岸</b><span>世界</span></div>
+            <div class="timeline-story">
+              <svg class="river-drawing" viewBox="0 0 342 370" aria-hidden="true"><path d="M174-10C215 52 126 88 169 153S218 223 172 286s-15 66 3 98" fill="none" stroke="#bee7e0" stroke-width="62"/><path d="M174-10C215 52 126 88 169 153S218 223 172 286s-15 66 3 98" fill="none" stroke="#e3f6ed" stroke-width="4" stroke-dasharray="8 13"/></svg>
+              <div class="river-date date-a">约公元前 1300 年</div>
+              <div class="era-row"><div class="event-card shang"><span class="historic-object bone" aria-hidden="true">卜</span><small>中国 · 商朝</small><b>甲骨上刻下文字</b></div><div class="event-card egypt"><span class="historic-object scroll" aria-hidden="true">≋</span><small>古埃及 · 新王国</small><b>纸草上写下记录</b></div></div>
+              <div class="river-date date-b">公元 105 年前后</div>
+              <div class="era-row"><div class="event-card han"><span class="historic-object paper" aria-hidden="true">文</span><small>中国 · 东汉</small><b>蔡伦改进造纸术</b></div><div class="event-card rome"><span class="historic-object stone" aria-hidden="true">A</span><small>罗马帝国时期</small><b>石头上也有文字</b></div></div>
+            </div>
+            <div class="timeline-question"><span class="evidence-mark">?</span><span><b>你的发现是什么？</b><small>他们用的材料不同，都想把事情留下来。</small></span></div>
+            <a class="button primary" href="#parent">把发现装进证据册　→</a>
+            <p class="source-note">布局示例 · 节点间距不代表实际时长 · 史料待教材校对</p>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item"><b>发现</b>今天</div><div class="nav-item active"><b>时间长河</b>历史</div><div class="nav-item"><b>我的</b>小档案</div></nav>
+        </div></div>
+      </article>
+      <article class="sample" id="sister">
+        <div class="sample-title"><strong>05 妹妹的奇遇</strong><span>4 岁 · 听口令、找一找、说一个词</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="appbar"><span class="wordmark">小侦探奇遇记</span><button class="profile"><span class="avatar sister-avatar">妹</span>妹妹 · 4岁　⌄</button></div>
+          <div class="content home-content sister-content">
+            <div class="case-kicker"><span>妹妹的奇遇</span><span>一起找一找</span></div>
+            <h3>谁藏起了星星贴纸？</h3>
+            <p class="subhead">猫头鹰探长说，它就藏在冒险岛上！</p>
+            <div class="sister-map"><img src="assets/detective-world.svg" alt="妹妹可以探索的冒险岛地图"><img class="owl-avatar" src="assets/owl-detective.svg" alt="猫头鹰探长"></div>
+            <button class="big-prompt" id="sister-prompt"><span class="sound-dot">▶</span><b>听探长说：找一找星星！</b></button>
+            <div class="sister-objects" aria-label="找一找星星"><button class="find-object" data-object="月亮" aria-label="月亮"><svg viewBox="0 0 80 80"><path d="M57 12A29 29 0 1 0 69 57 28 28 0 0 1 57 12Z" fill="#97cbbb" stroke="#619786" stroke-width="2"/></svg></button><button class="find-object" data-object="星星" aria-label="星星"><svg viewBox="0 0 80 80"><path d="m40 6 10 21 24 3-18 17 5 24-21-12-21 12 5-24L6 30l24-3Z" fill="#ffd36b" stroke="#d69b3c" stroke-width="2"/></svg></button><button class="find-object" data-object="云朵" aria-label="云朵"><svg viewBox="0 0 80 80"><path d="M20 61C-1 61 0 35 18 34 19 9 58 9 62 34 84 35 83 61 63 61Z" fill="#b1dae3" stroke="#73a6b5" stroke-width="2"/></svg></button></div>
+            <p class="sister-feedback" id="sister-feedback" aria-live="polite">找到它，轻轻点一下。</p>
+            <div class="tiny-reward"><img src="assets/owl-detective.svg" alt="">探长陪你慢慢找，不着急。</div>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item active"><b>发现</b>今天</div><div class="nav-item"><b>时间长河</b>故事</div><div class="nav-item"><b>我的</b>探险本</div></nav>
+        </div></div>
+      </article>
+      <article class="sample" id="parent">
+        <div class="sample-title"><strong>06 家长证据册</strong><span>看兴趣和思路，不看排名</span></div>
+        <div class="device"><div class="screen">
+          <div class="status"><span>9:41</span><span class="signal">●●●　▰</span></div>
+          <div class="content">
+            <div class="parent-head"><h3>家庭证据册</h3><p>看看孩子正在好奇什么、怎样找到答案。</p></div>
+            <div class="child-switch"><div class="child-chip active">哥哥 · 8岁</div><div class="child-chip">妹妹 · 4岁</div></div>
+            <div class="parent-label">哥哥的探索记录</div>
+            <div class="record"><div class="record-top"><strong>英语 · 问问火车站长</strong><small>今天</small></div><p>愿意跟着说问句，还主动换成了“星星徽章”。</p></div>
+            <div class="record"><div class="record-top"><strong>数学 · 齿轮密码</strong><small>昨天</small></div><p>发现齿轮每次多一排，试着用积木摆出下一队。</p></div>
+            <div class="record"><div class="record-top"><strong>历史 · 沿时间河找证据</strong><small>周日</small></div><p>发现不同地方的人都曾用文字留下记录。</p></div>
+            <div class="parent-tip"><b>今天可以这样聊</b><p>“你从哪儿发现这个线索的？”先听孩子讲完，再一起把发现收进探险本。</p></div>
+            <div class="section-label">家庭设置</div>
+            <div class="activity"><span class="subject-mark hist">家</span><span><strong>孩子档案与内容偏好</strong><small>年龄、年级、每日时长</small></span><span class="duration">›</span></div>
+          </div>
+          <nav class="bottom-nav"><div class="nav-item"><b>发现</b>今天</div><div class="nav-item"><b>时间长河</b>历史</div><div class="nav-item active"><b>我的</b>家长</div></nav>
+        </div></div>
+      </article>
+    </section>
+    <p class="footnote">原型说明：可以点选数学答案、尝试提示、找星星并演示英语反馈；未开启麦克风，也不采集孩子数据。家长证据册为示例记录。侦探故事为虚构，历史知识需在正式版本中按教材及史料核对。未设置排行榜、打卡惩罚或付费奖励。</p>
+  </main>
+  <script>
+    const mathFeedback = document.getElementById('math-feedback');
+    document.querySelectorAll('[data-answer]').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('[data-answer]').forEach(option => option.setAttribute('aria-pressed', String(option === button)));
+        mathFeedback.textContent = `你选了 ${button.dataset.answer}。试试验证自己的想法。`;
+      });
+    });
+    document.getElementById('math-hint').addEventListener('click', () => {
+      mathFeedback.textContent = '小提示：先多 2 个，再多 3 个，再多 4 个。下一次呢？';
+    });
+    document.getElementById('unlock').addEventListener('click', () => {
+      const selected = document.querySelector('[data-answer][aria-pressed="true"]');
+      if (!selected) { mathFeedback.textContent = '先选一个答案，也可以先看看提示。'; return; }
+      const solved = selected.dataset.answer === '15';
+      mathFeedback.textContent = solved ? '宝箱打开了！1 + 2 + 3 + 4 + 5 = 15。你还能摆出来吗？' : '宝箱还没打开。可以从每两队相差几个开始，再试一次。';
+      document.querySelector('.chest-lock').textContent = solved ? '✓' : '?';
+    });
+    function speak(text, lang, fallback) {
+      if (!('speechSynthesis' in window)) { fallback(); return; }
+      window.speechSynthesis.cancel();
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = lang;
+      speech.rate = 0.8;
+      speech.onerror = fallback;
+      window.speechSynthesis.speak(speech);
+    }
+    document.getElementById('english-listen').addEventListener('click', () => {
+      const reply = document.getElementById('english-reply');
+      reply.textContent = '听完后，试着跟探长说：Hello! A star?';
+      speak('Hello! A star?', 'en-US', () => { reply.textContent = '当前浏览器无法播放语音，可以照着短句跟家长说一说。'; });
+    });
+    document.getElementById('english-start').addEventListener('click', () => {
+      document.getElementById('english-reply-title').textContent = '对话反馈示意：站长递来了线索！';
+      document.getElementById('english-reply').textContent = '“我看到星星徽章往河边去了！”原型不录音，也不判断发音。';
+    });
+    document.getElementById('sister-prompt').addEventListener('click', () => {
+      speak('小侦探，找一找星星。', 'zh-CN', () => { document.getElementById('sister-feedback').textContent = '请家长读一读：找一找星星。'; });
+    });
+    document.querySelectorAll('[data-object]').forEach(button => {
+      button.addEventListener('click', () => {
+        const found = button.dataset.object === '星星';
+        document.getElementById('sister-feedback').textContent = found ? '找到星星啦！Star，和探长说一说。' : `这是${button.dataset.object}。再看看，尖尖角的星星在哪里？`;
+        document.querySelectorAll('[data-object]').forEach(option => option.classList.toggle('found', found && option === button));
+      });
+    });
+  </script>
+</body>
+</html>
