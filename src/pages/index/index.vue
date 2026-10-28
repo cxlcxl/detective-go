@@ -5,6 +5,7 @@ const missions = [
   { icon: 'A', title: '问问火车站长', hint: '开口说英语，听听新线索', path: '/pages/english/index', tone: 'english' },
   { icon: '2', title: '破解齿轮密码', hint: '看规律，找出宝箱密码', path: '/pages/math/index', tone: 'math' },
   { icon: '时', title: '沿时间河找证据', hint: '看看古人怎样留下记录', path: '/pages/history/index', tone: 'history' },
+  { icon: '?', title: '公园里的怪影子', hint: '案件 02 · 用 Is it a...? 问出真相', path: '/pages/case02/index', tone: 'english' },
 ]
 
 function openMission(path) {

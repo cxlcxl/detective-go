@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="A grey cat">
+  <ellipse cx="80" cy="114" rx="34" ry="30" fill="#8f938c" stroke="#4a4038" stroke-width="4"/>
+  <path d="M112 124 Q144 120 132 90" fill="none" stroke="#4a4038" stroke-width="5" stroke-linecap="round"/>
+  <path d="M50 54 L54 22 L74 42 Z M110 54 L106 22 L86 42 Z" fill="#8f938c" stroke="#4a4038" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="80" cy="64" r="32" fill="#a3a79f" stroke="#4a4038" stroke-width="4"/>
+  <circle cx="68" cy="60" r="4" fill="#4a4038"/><circle cx="92" cy="60" r="4" fill="#4a4038"/>
+  <path d="M76 72 L84 72 L80 77 Z" fill="#4a4038"/>
+  <path d="M46 70 h18 M46 78 h18 M96 70 h18 M96 78 h18" stroke="#4a4038" stroke-width="2" stroke-linecap="round"/>
+</svg>

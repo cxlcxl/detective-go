@@ -28,4 +28,13 @@ node scripts/check-theme.mjs
 
 开发时将 `dist/dev/mp-weixin` 导入微信开发者工具；生产构建产物位于 `dist/build/mp-weixin`。首次导入可使用游客模式，正式真机预览和发布前需要在 `src/manifest.json` 填入自己的微信小程序 AppID。
 
+案件内容（台词、选项、答案）放在 `src/content/*.json`，页面只负责呈现。美音音频由 `scripts/generate-audio.py` 根据 JSON 里的 `lines` 本地生成（Kokoro TTS，Apache 2.0，可商用），输出到 `src/static/audio/<案件 id>/`，每句含正常和 `-slow` 慢速两版。改了台词后重新运行：
+
+```sh
+python3 -m venv /tmp/kokoroenv && /tmp/kokoroenv/bin/pip install kokoro-onnx==0.4.7 soundfile==0.13.1
+/tmp/kokoroenv/bin/python -I scripts/generate-audio.py src/content/case-02.json
+```
+
+模型文件说明见脚本顶部注释，需要 `ffmpeg`。课本 PDF 放在 `books/`（已加入 `.gitignore`，不提交）。
+
 页面和路由配置在 `src/pages.json`，品牌与主题色在 `src/styles/theme.css`。当前页面使用本地示例数据；语音播放、录音识别、云端存储和教材内容校对尚未接入。

@@ -13,6 +13,10 @@
       "style": { "navigationBarTitleText": "英语线索" }
     },
     {
+      "path": "pages/case02/index",
+      "style": { "navigationBarTitleText": "公园里的怪影子" }
+    },
+    {
       "path": "pages/math/index",
       "style": { "navigationBarTitleText": "数学机关" }
     },

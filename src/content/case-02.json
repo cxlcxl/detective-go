@@ -1,0 +1,42 @@
+{
+  "id": "case-02",
+  "title": "公园里的怪影子",
+  "grade": "一年级上册",
+  "textbook": "外研版英语（一年级起点）一年级上册 Module 7",
+  "voices": {
+    "ask": "af_bella",
+    "owl": "am_michael"
+  },
+  "lines": {
+    "intro": { "voice": "owl", "text": "Look, look! What's that?" },
+    "ask-dog": { "voice": "ask", "text": "Is it a dog?" },
+    "ask-monkey": { "voice": "ask", "text": "Is it a monkey?" },
+    "ask-cat": { "voice": "ask", "text": "Is it a cat?" },
+    "ask-bird": { "voice": "ask", "text": "Is it a bird?" },
+    "ask-kite": { "voice": "ask", "text": "Is it a kite?" },
+    "ask-red": { "voice": "ask", "text": "Is it red?" },
+    "ask-blue": { "voice": "ask", "text": "Is it blue?" },
+    "ask-yellow": { "voice": "ask", "text": "Is it yellow?" },
+    "ask-green": { "voice": "ask", "text": "Is it green?" },
+    "ask-red-kite": { "voice": "ask", "text": "Is it a red kite?" },
+    "no": { "voice": "owl", "text": "No, it isn't." },
+    "yes": { "voice": "owl", "text": "Yes, it is." },
+    "reveal": { "voice": "owl", "text": "Look! It's a kite." },
+    "reveal-red": { "voice": "owl", "text": "It's a red kite." }
+  },
+  "items": [
+    { "id": "dog", "zh": "小狗", "image": "/static/assets/case02-dog.svg" },
+    { "id": "monkey", "zh": "猴子", "image": "/static/assets/case02-monkey.svg" },
+    { "id": "cat", "zh": "小猫", "image": "/static/assets/case02-cat.svg" },
+    { "id": "bird", "zh": "小鸟", "image": "/static/assets/case02-bird.svg" },
+    { "id": "kite", "zh": "风筝", "image": "/static/assets/case02-kite-grey.svg" }
+  ],
+  "colours": [
+    { "id": "blue", "zh": "蓝色", "image": "/static/assets/case02-kite-blue.svg" },
+    { "id": "red", "zh": "红色", "image": "/static/assets/case02-kite-red.svg" },
+    { "id": "yellow", "zh": "黄色", "image": "/static/assets/case02-kite-yellow.svg" },
+    { "id": "green", "zh": "绿色", "image": "/static/assets/case02-kite-green.svg" }
+  ],
+  "answer": { "item": "kite", "colour": "red" },
+  "parentTask": "孩子藏起一样东西，家长用 Is it a...? 来猜，孩子用 Yes, it is. / No, it isn't. 回答。"
+}

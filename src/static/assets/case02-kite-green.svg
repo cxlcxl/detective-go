@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="A green kite">
+  <path d="M80 14 L128 66 L80 128 L32 66 Z" fill="#5f9466" stroke="#4a4038" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M80 14 L80 128 M32 66 L128 66" stroke="#4a4038" stroke-width="3" opacity="0.55"/>
+  <path d="M80 128 C70 138 92 144 80 152" fill="none" stroke="#4a4038" stroke-width="3" stroke-linecap="round"/>
+  <path d="M74 140 L86 134 M72 150 L84 146" stroke="#5f9466" stroke-width="6" stroke-linecap="round"/>
+</svg>
